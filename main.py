@@ -3,10 +3,10 @@ SUPER = object()
 
 class Super(type):
     def __new__(cls, name, base, attrs):
-        supered_attrs = attrs.get('_supered_attrs')
+        supered_attrs = attrs.get("_supered_attrs")
         if not supered_attrs:
             for parent in base:
-                supered_attrs = getattr(parent, '_supered_attrs')
+                supered_attrs = getattr(parent, "_supered_attrs")
                 if supered_attrs:
                     break
         if not supered_attrs:
@@ -26,7 +26,7 @@ class Super(type):
 
 
 class BaseSuper(metaclass=Super):
-    _supered_attrs = ['features', 'foo']
+    _supered_attrs = ["features", "foo"]
 
 
 class Bar(BaseSuper):
