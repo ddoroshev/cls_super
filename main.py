@@ -2,7 +2,7 @@ from cls_super import Super, SUPER
 
 
 class BaseSuper(metaclass=Super):
-    _supered_attrs = [
+    _inherited_attrs = [
         "list_features",
         "tuple_features",
         "dict_features",
@@ -52,7 +52,7 @@ class Spam(Eggs):
 
 
 class BaseSuperFields(metaclass=Super):
-    _supered_attrs = ["fields"]
+    _inherited_attrs = ["fields"]
 
 
 class User:

@@ -3,17 +3,17 @@ SUPER = object()
 
 class Super(type):
     def __new__(cls, name, base, attrs):
-        supered_attrs = attrs.get("_supered_attrs")
-        if not supered_attrs:
+        inherited_attrs = attrs.get("_inherited_attrs")
+        if not inherited_attrs:
             for parent in base:
-                supered_attrs = getattr(parent, "_supered_attrs", None)
-                if supered_attrs:
+                inherited_attrs = getattr(parent, "_inherited_attrs", None)
+                if inherited_attrs:
                     break
 
-        if not supered_attrs:
+        if not inherited_attrs:
             return super().__new__(cls, name, base, attrs)
 
-        for attr_name in supered_attrs:
+        for attr_name in inherited_attrs:
             if SUPER not in attrs.get(attr_name, []):
                 continue
             values = attrs.pop(attr_name)
